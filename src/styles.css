@@ -1,1 +1,40 @@
+body {
+  font-family: "Google Sans", arial, sans-serif;
+}
 
+.weather-app {
+  width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.weather-additional {
+  color: rgb(112, 117, 122);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+
+.city {
+  color: rgb(32, 33, 36);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: right;
+}
+
+.sub-city {
+  color: rgb(112, 117, 122);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: right;
+}
