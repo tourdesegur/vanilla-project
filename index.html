@@ -16,6 +16,7 @@
       integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/styles.css" />
     <title>Vanilla Weather App</title>
   </head>
@@ -31,23 +32,23 @@
                   alt="sunny"
                 />
                 <div class="units">
-                  <strong>12</strong><span>°C | <a href="#">°F</a></span>
+                  <strong id="temp"></strong
+                  ><span>°C | <a href="#">°F</a></span>
                 </div>
               </div>
               <div class="col-6 additional">
                 <ul class="weather-additional">
-                  <li>Precipitation: 0%</li>
-                  <li>Humidity: 63%</li>
-                  <li>Wind: 8 km/h</li>
+                  <li>Humidity: <span id="humidity"></span>%</li>
+                  <li>Wind: <span id="wind"></span> km/h</li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="col-4">
             <ul class="city-info">
-              <li class="city">Lisbon</li>
+              <li class="city" id="city"></li>
               <li class="sub-city day-time">Monday 14:00</li>
-              <li class="sub-city weather">Sunny</li>
+              <li class="sub-city weather" id="description"></li>
             </ul>
           </div>
         </div>
