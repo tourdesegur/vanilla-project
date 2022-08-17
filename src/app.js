@@ -23,14 +23,12 @@ function formatDate(timestamp) {
 }
 
 function getForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "f8620effd7466dda0c3530a3be2c5f5e";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(response) {
-  console.log(response.data);
   let temperatureElement = document.querySelector("#temp");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -52,7 +50,6 @@ function displayTemperature(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-
   getForecast(response.data.coord);
 }
 
@@ -68,23 +65,6 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-function displayFahTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temp");
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let farTemperature = (celTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(farTemperature);
-}
-
-function displayCelTemperature(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#temp");
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  temperatureElement.innerHTML = Math.round(celTemperature);
-}
-
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
   let day = date.getDay();
@@ -93,11 +73,8 @@ function formatDay(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
   let forecastDaily = response.data.daily;
-
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
   forecastDaily.forEach(function (forecastDay, index) {
     if (index < 6) {
@@ -119,20 +96,11 @@ function displayForecast(response) {
             </div>`;
     }
   });
-
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
-let celTemperature = null;
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-let fahrenheitLink = document.querySelector("#f-link");
-fahrenheitLink.addEventListener("click", displayFahTemperature);
-
-let celsiusLink = document.querySelector("#c-link");
-celsiusLink.addEventListener("click", displayCelTemperature);
 
 search("New York");
