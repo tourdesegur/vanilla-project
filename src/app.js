@@ -32,6 +32,7 @@ function displayTemperature(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
+  displayForecast();
   celTemperature = response.data.main.temp;
 
   temperatureElement.innerHTML = Math.round(celTemperature);
@@ -74,6 +75,27 @@ function displayCelTemperature(event) {
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celTemperature);
+}
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+              <div class="forecast-day">${day}</div>
+              <img src="https://ssl.gstatic.com/onebox/weather/48/cloudy.png" />
+              <div class="forecast-temp">
+                <span class="ftemp-max"> 25°</span>
+                <span class="ftemp-min">17°</span>
+              </div>
+            </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 let celTemperature = null;
