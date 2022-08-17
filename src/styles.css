@@ -39,6 +39,15 @@ a {
   display: inline;
 }
 
+.weather-temperature .active {
+  color: rgb(32, 33, 36);
+  cursor: default;
+}
+
+.weather-temperature .activehover {
+  text-decoration: none;
+}
+
 .weather-temperature strong {
   color: rgb(32, 33, 36);
   font-size: 48px;
